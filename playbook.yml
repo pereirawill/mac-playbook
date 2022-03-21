@@ -1,0 +1,101 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    username: will
+    github_username: pereirawill
+    hostname_prefix: will-
+    work_company: cwlabs
+    homebrew_cask_apps:
+      - font-sauce-code-pro-nerd-font
+      - google-chrome
+      # - kubernetes-cli
+      # - helm
+      - iterm2
+      - karabiner-elements
+#      - keepingyouawake
+      - nordvpn
+      - obs
+      - postman
+#      - rectangle
+#      - sequel-ace
+      - slack
+      - skype
+#      - softmaker-freeoffice
+#      - spotify
+#      - tresorit
+      - powershell
+      - the-unarchiver
+      - vagrant
+      - { name: virtualbox, install_options:"debug,appdir=/Applications" }
+      - visual-studio-code
+      - vlc
+      - zoom
+
+    homebrew_installed_packages:
+      - ansible
+      - bash
+      - bash-completion
+      - coreutils
+      - docker
+      - encoredev/tap/encore
+#      - exiftool
+#      - ffmpeg
+#      - fzf
+      - git
+      - go
+      - golangci-lint
+      - goreleaser/tap/goreleaser
+      - graphviz
+      - jq
+      - mas
+      - tmux
+#      - pandoc
+#      - s3cmd
+      - starship
+      - terraform
+      - tree
+      - wget
+#      - yarn
+#      - youtube-dl
+    homebrew_taps:
+      - encoredev/tap
+      - goreleaser/tap
+      - homebrew/bundle
+      - homebrew/cask
+      - homebrew/cask-fonts
+      - homebrew/core
+
+  roles:
+    - role: elliotweiser.osx-command-line-tools
+      tags: ["osx-command-line-tools"]
+    - role: geerlingguy.mac.homebrew
+      tags: ["homebrew"]
+
+  tasks:
+    - import_tasks: tasks/hostname.yml
+      tags: ["hostname"]
+
+    - import_tasks: tasks/homebrew.yml
+      tags: ["homebrew"]
+
+    - import_tasks: tasks/directories.yml
+      tags: ["directories"]
+
+    - import_tasks: tasks/dotfiles.yml
+      tags: ["dotfiles"]
+
+    - import_tasks: tasks/shell.yml
+      tags: ["shell"]
+
+    - import_tasks: tasks/ssh.yml
+      tags: ["ssh"]
+
+    - import_tasks: tasks/aws.yml
+      tags: ["aws"]
+
+    - import_tasks: tasks/vpn.yml
+      tags: ["vpn"]
+
+    - import_tasks: tasks/vscode.yml
+      tags: ["vscode"]

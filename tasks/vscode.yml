@@ -1,0 +1,62 @@
+---
+# - name: Sync installed VSCode extensions to `~/dotfiles`
+#   command: code --list-extensions --show-versions > ~/dotfiles/vscode/extensions
+#   register: sync_vscode_extensions
+
+# - name: Debug output from syncing VSCode extensions
+#   debug:
+#     var: sync_vscode_extensions
+# Add something which ensures path is set here
+    - name: Install VSCode extensions
+      shell: code --install-extension {{ item }}
+      with_items:
+        - 4ops.terraform
+        - bbenoist.vagrant
+        - bencoleman.armview
+        - chef-software.chef
+        - docsmsft.docs-yaml
+        - hashicorp.terraform
+        - marcostazi.VS-code-vagrantfile
+        - ms-azuretools.vscode-azureterraform
+        - ms-azuretools.vscode-bicep
+        - ms-azuretools.vscode-docker
+        - ms-dotnettools.vscode-dotnet-runtime
+        - ms-python.python
+        - ms-python.vscode-pylance
+        - ms-toolsai.jupyter
+        - ms-toolsai.jupyter-keymap
+        - ms-toolsai.jupyter-renderers
+        - ms-vscode-remote.remote-containers
+        - ms-vscode-remote.remote-ssh
+        - ms-vscode-remote.remote-ssh-edit
+        - ms-vscode-remote.remote-wsl
+        - ms-vscode.azure-account
+        - ms-vscode.azurecli
+        - ms-vscode.powershell
+        - ms-vsliveshare.vsliveshare
+        - msazurermtools.azurerm-vscode-tools
+        - rebornix.ruby
+        - redhat.vscode-commons
+        - redhat.vscode-yaml
+        - wingrunr21.vscode-ruby
+
+        # - apollographql.vscode-apollo
+        # - bradlc.vscode-tailwindcss
+        # - castwide.solargraph
+        # - clinyong.vscode-css-modules
+        # - eamodio.gitlens
+        # - jakebecker.elixir-ls
+        # - kaiwood.endwise
+        # - karunamurti.haml
+        # - ms-vscode-remote.vscode-remote-extensionpack
+        # - ms-vscode.vscode-typescript-tslint-plugin
+        # - msjsdiag.debugger-for-chrome
+        # - rebornix.ruby
+        # - richie5um2.vscode-sort-json
+        # - Tyriar.sort-lines
+        # - vscodevim.vim
+        # - wholroyd.jinja
+        # - wingrunr21.vscode-ruby
+        # - xabikos.javascriptsnippets
+        # - streetsidesoftware.code-spell-checker
+        # - fabiospampinato.vscode-todo-plus

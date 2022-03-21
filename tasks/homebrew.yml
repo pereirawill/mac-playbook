@@ -1,0 +1,36 @@
+---
+# TODO: Would prefer for this to be handled via geerlingguy.mac.homebrew
+# however I was seeing inconsistent behaviour when paired with become.
+- name: "Install from Mac app store"
+  shell: mas install {{ item }}
+  with_items:
+    - 1295203466 # Microsoft Remote Desktop 
+    # - 1274495053 # Microsoft To Do
+    - 823766827  # OneDrive
+    - 414568915  # Key Codes
+    # - 441258766  # Magnet
+
+
+- name: Upgrade Homebrew packages
+  command: brew upgrade
+  register: upgrade_homebrew
+
+- name: Debug output from upgarding Homebrew packages
+  debug:
+    var: upgrade_homebrew
+
+- name: Cleanup Homebrew
+  command: brew cleanup
+  register: cleanup_homebrew
+
+- name: Debug output from Homebrew cleanup
+  debug:
+    var: cleanup_homebrew
+
+- name: Uninstall unneeded formulae from Homebrew
+  command: brew autoremove
+  register: autoremove_homebrew
+
+- name: Debug output from Homebrew autoremove
+  debug:
+    var: autoremove_homebrew

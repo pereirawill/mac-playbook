@@ -1,0 +1,41 @@
+---
+- name: Assert that home directory is `~/{{ username }}`
+  assert:
+    that:
+      - "lookup('env', 'HOME') == '/Users/{{ username }}'"
+
+- name: Create `~/Tresorit` directory
+  file:
+    path: ~/Tresorit
+    state: directory
+    mode: "755"
+
+- name: Create `~/.config` directory
+  file:
+    path: ~/.config
+    state: directory
+    mode: "755"
+
+- name: Create `~/projects` directory
+  file:
+    path: ~/projects/github.com
+    state: directory
+    mode: "755"
+
+- name: Create `~/projects/github.com` directory
+  file:
+    path: ~/projects/github.com
+    state: directory
+    mode: "755"
+
+- name: "Create `~/projects/github.com/{{ github_username }}` directory"
+  file:
+    path: "~/projects/github.com/{{ github_username }}"
+    state: directory
+    mode: "755"
+
+- name: "Create `~/projects/github.com/{{ work_company }}` directory"
+  file:
+    path: "~/projects/github.com/{{ work_company }}"
+    state: directory
+    mode: "755"
