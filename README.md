@@ -1,4 +1,4 @@
-# dev-playbook
+# will-playbook
 
 [Ansible](https://github.com/ansible/ansible) playbook for macOS setup and
 configuration.
